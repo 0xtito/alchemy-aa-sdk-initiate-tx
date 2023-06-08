@@ -26,7 +26,7 @@ export async function createAccount() {
   });
   const provider: AlchemyProvider = await alchemy.config.getProvider();
 
-  // const owner: Wallet = Wallet.fromMnemonic(MNEMONIC_PHRASE);
+  // const walletOwner: Wallet = Wallet.fromMnemonic(MNEMONIC_PHRASE);
   const walletOwner: Wallet = new Wallet(PRIV_KEY);
 
   const accountOwner: SimpleSmartAccountOwner =

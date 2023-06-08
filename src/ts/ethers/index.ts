@@ -10,15 +10,12 @@ const ADDR = "0x361Da2Ca3cC6C1f37d2914D5ACF02c4D2cCAC43b";
  * @note Seperating the logic to create the account, and the logic to send the transaction
  */
 export async function main() {
-  const accountOwner: AccountSigner = await createAccount();
+  const smartContractAccount: AccountSigner = await createAccount();
 
   const amountToSend: bigint = parseEther("0.005");
 
-  const tx: SendUserOperationResult = await accountOwner.sendUserOperation(
-    ADDR,
-    "0x",
-    amountToSend
-  );
+  const tx: SendUserOperationResult =
+    await smartContractAccount.sendUserOperation(ADDR, "0x", amountToSend);
 
   return tx;
 }
