@@ -1,4 +1,5 @@
 import {
+  type SimpleSmartAccountOwner,
   SimpleSmartContractAccount,
   SmartAccountProvider,
 } from "@alchemy/aa-core";
@@ -8,16 +9,23 @@ import { sepolia } from "viem/chains";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const MNEMONIC_PHRASE = process.env.MNEMONIC_PHRASE;
-const ALCHEMY_API_URL = process.env.ALCHEMY_API_URL;
+const PRIV_KEY = process.env.PRIV_KEY!;
+const MNEMONIC_PHRASE = process.env.MNEMONIC_PHRASE!;
+const ALCHEMY_API_URL = process.env.ALCHEMY_API_URL!;
 
 const ENTRYPOINT_ADDRESS = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
 const SIMPLE_ACCOUNT_FACTORY_ADDRESS =
   "0x9406Cc6185a346906296840746125a0E44976454";
 
+/**
+ * @description Creates a smart contract account that can be used to send transactions
+ * @returns The smart contract account owner + provider that can be used to send transactions from the SCA
+ */
 export async function createAccount() {
-  const account = mnemonicToAccount(MNEMONIC_PHRASE);
-  const owner = {
+  // const account = mnemonicToAccount(MNEMONIC_PHRASE);
+  const account = privateKeyToAccount(`0x${PRIV_KEY}`);
+
+  const owner: SimpleSmartAccountOwner = {
     signMessage: async (msg) =>
       account.signMessage({
         message: toHex(msg),
@@ -26,6 +34,7 @@ export async function createAccount() {
   };
 
   const chain = sepolia;
+
   const provider = new SmartAccountProvider(
     ALCHEMY_API_URL,
     ENTRYPOINT_ADDRESS,
@@ -43,6 +52,5 @@ export async function createAccount() {
       })
   );
 
-  const accountAddress = await signer.getAddress();
-  console.log("Account address: ", accountAddress);
+  return signer;
 }

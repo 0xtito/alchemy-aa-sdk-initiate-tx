@@ -5,14 +5,19 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test:ts-core": "tsx -r dotenv/config src/ts/index.ts"
+    "test:ts-core": "tsx -r dotenv/config src/ts/core/index.ts",
+    "test:ts-ethers": "tsx -r dotenv/config src/ts/ethers/index.ts",
+    "test:js-core": "tsx -r dotenv/config src/js/core/index.js",
+    "test:js-ethers": "tsx -r dotenv/config src/js/ethers/index.js"
   },
   "author": "0xtito and racampos",
   "license": "ISC",
   "dependencies": {
     "@alchemy/aa-core": "^0.0.1-alpha.2",
     "@alchemy/aa-ethers": "^0.0.1-alpha.2",
-    "dotenv": "^16.0.3"
+    "alchemy-sdk": "^2.9.0",
+    "dotenv": "^16.0.3",
+    "ethers": "^6.5.1"
   },
   "devDependencies": {
     "@types/node": "^20.2.5",
