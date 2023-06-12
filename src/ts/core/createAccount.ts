@@ -19,7 +19,7 @@ const SIMPLE_ACCOUNT_FACTORY_ADDRESS =
 
 /**
  * @description Creates a smart contract account that can be used to send transactions
- * @returns The smart contract account owner + provider that can be used to send transactions from the SCA
+ * @returns The smart contract account owner + provider that can be used to send transactions/user operations from the SCA
  */
 export async function createAccount() {
   // const account = mnemonicToAccount(MNEMONIC_PHRASE);
@@ -34,7 +34,6 @@ export async function createAccount() {
   };
 
   const chain = sepolia;
-
   const provider = new SmartAccountProvider(
     ALCHEMY_API_URL,
     ENTRYPOINT_ADDRESS,

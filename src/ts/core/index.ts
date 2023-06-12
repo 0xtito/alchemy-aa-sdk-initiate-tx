@@ -1,13 +1,8 @@
 import { createAccount } from "./createAccount";
 import { parseEther } from "viem";
-import type {
-  SendUserOperationResult,
-  SmartAccountProvider,
-  BaseSmartContractAccount,
-} from "@alchemy/aa-core";
-import type { Transport } from "viem";
+import type { SendUserOperationResult } from "@alchemy/aa-core";
 
-const ADDR = "0x361Da2Ca3cC6C1f37d2914D5ACF02c4D2cCAC43b";
+const ADDR = "0xc53bf942c381A14036675502Ae69A54595f9c2A8"; // replace with the adress you want to send ETH to
 
 /**
  * @description Creates a smart contract account, and sends ETH to the specified address (could be an EOA or SCA)
