@@ -11,20 +11,42 @@ const ADDR = "0xc53bf942c381A14036675502Ae69A54595f9c2A8"; // replace with the a
 export async function main() {
   const signer = await createAccount();
 
-  const amountToSend: bigint = parseEther("0.001");
+  const amountToSend: bigint = parseEther("0.0001");
 
-  const tx: SendUserOperationResult = await signer.sendUserOperation(
-    ADDR,
-    "0x",
-    amountToSend
+  const result: SendUserOperationResult = await signer.sendUserOperation({
+    target: ADDR,
+    data: "0x",
+    value: amountToSend,
+  });
+
+  console.log("User operation result: ", result);
+
+  console.log(
+    "Waiting for the user operation to be included in a mined transaction..."
   );
 
-  return tx;
+  const txHash = await signer.waitForUserOperationTransaction(
+    result.hash as `0x${string}`
+  );
+
+  console.log("Transaction hash: ", txHash);
+
+  const userOpReceipt = await signer.getUserOperationReceipt(
+    result.hash as `0x${string}`
+  );
+
+  console.log("User operation receipt: ", userOpReceipt);
+
+  const txReceipt = await signer.rpcClient.waitForTransactionReceipt({
+    hash: txHash,
+  });
+
+  return txReceipt;
 }
 
 main()
-  .then((receipt) => {
-    console.log("Transaction receipt: ", receipt);
+  .then((txReceipt) => {
+    console.log("Transaction receipt: ", txReceipt);
   })
   .catch((err) => {
     console.error("Error: ", err);

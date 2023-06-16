@@ -28,7 +28,9 @@ export async function createAccount() {
   const owner: SimpleSmartAccountOwner = {
     signMessage: async (msg) =>
       account.signMessage({
-        message: toHex(msg),
+        message: {
+          raw: toHex(msg),
+        },
       }),
     getAddress: async () => account.address,
   };
@@ -37,7 +39,12 @@ export async function createAccount() {
   const provider = new SmartAccountProvider(
     ALCHEMY_API_URL,
     ENTRYPOINT_ADDRESS,
-    chain
+    chain,
+    undefined,
+    {
+      txMaxRetries: 10,
+      txRetryIntervalMs: 5000,
+    }
   );
 
   const signer = provider.connect(
