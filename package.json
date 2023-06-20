@@ -8,7 +8,9 @@
     "test:ts-core": "tsx -r dotenv/config src/ts/core/index.ts",
     "test:ts-ethers": "tsx -r dotenv/config src/ts/ethers/index.ts",
     "test:js-core": "tsx -r dotenv/config src/js/core/index.js",
-    "test:js-ethers": "tsx -r dotenv/config src/js/ethers/index.js"
+    "test:js-ethers": "tsx -r dotenv/config src/js/ethers/index.js",
+    "get-CA": "tsx -r dotenv/config scripts/getCounterfactual.ts",
+    "sendETH": "tsx -r dotenv/config scripts/sendEthToSCA.ts"
   },
   "author": "0xtito and racampos",
   "license": "ISC",
