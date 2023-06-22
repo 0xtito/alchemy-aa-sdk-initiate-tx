@@ -12,7 +12,6 @@ import {
 } from "@alchemy/aa-core";
 
 const PRIV_KEY = process.env.PRIV_KEY!;
-const MNEMONIC_PHRASE = process.env.MNEMONIC_PHRASE!;
 const ALCHEMY_API_KEY = process.env.ALCHEMY_API_KEY!;
 
 const ENTRYPOINT_ADDRESS = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
@@ -26,11 +25,10 @@ export async function createAccount() {
   });
   const provider: AlchemyProvider = await alchemy.config.getProvider();
 
-  // const walletOwner: Wallet = Wallet.fromMnemonic(MNEMONIC_PHRASE);
-  const walletOwner: Wallet = new Wallet(PRIV_KEY);
+  const owner: Wallet = new Wallet(PRIV_KEY);
 
   const accountOwner: SimpleSmartAccountOwner =
-    convertWalletToAccountSigner(walletOwner);
+    convertWalletToAccountSigner(owner);
 
   const signer: AccountSigner = EthersProviderAdapter.fromEthersProvider(
     provider,

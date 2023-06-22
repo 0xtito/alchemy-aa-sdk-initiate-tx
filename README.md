@@ -8,6 +8,7 @@ We've structured this project to implement the process in four different ways:
 - Using JavaScript with AA-core
 - Using TypeScript with AA-ethers
 - Using JavaScript with AA-ethers
+
 ## Prerequisites
 
 You will need the latest recommended [Node](https://nodejs.org/en) version v18.16.1 to use this repository.
@@ -33,6 +34,7 @@ In your terminal, you should now see
 Now using node v18.16.1 (npm v9.5.1)
 v18.16.1
 ```
+
 ## Setup
 
 Clone the repository and install the dependencies:
@@ -53,6 +55,7 @@ npm run sendETH
 ```
 
 The first command executes [getCounterfactual.ts](https://github.com/0xtito/alchemy-aa-sdk-initiate-tx/blob/main/scripts/getCounterfactual.ts) to fetch the counterfactual address. The second command executes [sendETHToSCA.ts](https://github.com/0xtito/alchemy-aa-sdk-initiate-tx/blob/main/scripts/sendEthToSCA.ts) to send ETH from your EOA to the SCA.
+
 ## Explaining the Scripts
 
 Let's briefly review the files within the [Scripts](https://github.com/0xtito/alchemy-aa-sdk-initiate-tx/tree/main/scripts) folder.
@@ -74,6 +77,7 @@ Let's briefly review the files within the [Scripts](https://github.com/0xtito/al
 The respective index file in the relevant combination (TypeScript/JavaScript, core/ethers) will be executed depending on which command you run. They each accomplish the same goal, creating a SCA and sending ETH from it - only the methodology differs.
 
 The four main commands are:
+
 - `npm run execute:ts-core`
 - `npm run execute:ts-ethers`
 - `npm run execute:js-core`
