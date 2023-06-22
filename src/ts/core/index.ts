@@ -2,7 +2,7 @@ import { createAccount } from "./createAccount";
 import { parseEther } from "viem";
 import type { SendUserOperationResult } from "@alchemy/aa-core";
 
-const ADDR = "0xc53bf942c381A14036675502Ae69A54595f9c2A8"; // replace with the adress you want to send ETH to
+const ADDR = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"; // replace with the adress you want to send SepoliaETH to, unless you want to send ETH to Vitalik :)
 
 /**
  * @description Creates a smart contract account, and sends ETH to the specified address (could be an EOA or SCA)

@@ -1,7 +1,7 @@
 import { createAccount } from "./createAccount";
 import { parseEther } from "viem";
 
-const ADDR = "0x361Da2Ca3cC6C1f37d2914D5ACF02c4D2cCAC43b";
+const ADDR = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"; // replace with the adress you want to send SepoliaETH to, unless you want to send ETH to Vitalik :)
 
 /**
  * @description Creates a smart contract account, and sends ETH to the specified address (could be an EOA or SCA)
@@ -10,16 +10,38 @@ const ADDR = "0x361Da2Ca3cC6C1f37d2914D5ACF02c4D2cCAC43b";
 export async function main() {
   const signer = await createAccount();
 
-  const amountToSend = parseEther("0.0005");
+  const amountToSend = parseEther("0.0001");
 
-  const tx = await signer.sendUserOperation(ADDR, "0x", amountToSend);
+  const result = await signer.sendUserOperation({
+    target: ADDR,
+    data: "0x",
+    value: amountToSend,
+  });
 
-  return tx;
+  console.log("User operation result: ", result);
+
+  console.log(
+    "Waiting for the user operation to be included in a mined transaction..."
+  );
+
+  const txHash = await signer.waitForUserOperationTransaction(result.hash);
+
+  console.log("Transaction hash: ", txHash);
+
+  const userOpReceipt = await signer.getUserOperationReceipt(result.hash);
+
+  console.log("User operation receipt: ", userOpReceipt);
+
+  const txReceipt = await signer.rpcClient.waitForTransactionReceipt({
+    hash: txHash,
+  });
+
+  return txReceipt;
 }
 
 main()
-  .then((receipt) => {
-    console.log("Transaction receipt: ", receipt);
+  .then((txReceipt) => {
+    console.log("Transaction receipt: ", txReceipt);
   })
   .catch((err) => {
     console.error("Error: ", err);
