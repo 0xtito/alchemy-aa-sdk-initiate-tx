@@ -47,10 +47,10 @@ npm install
 
 Then create your `.env` file based on `.env.example`.
 
-Once you have created and populated your `.env`, the following commands
+Once you have created and populated your `.env`, run the following commands
 
 ```
-npm run get-CFaddress
+npm run getCFaddress
 npm run sendETH
 ```
 
@@ -59,10 +59,6 @@ The first command executes [getCounterfactual.ts](https://github.com/0xtito/alch
 ## Explaining the Scripts
 
 Let's briefly review the files within the [Scripts](https://github.com/0xtito/alchemy-aa-sdk-initiate-tx/tree/main/scripts) folder.
-
-#### createSigner.ts
-
-- creates the signer, which is connected to the SCA
 
 #### getCounterfactual.ts
 
