@@ -32,5 +32,5 @@ main()
     console.error("Error: ", err);
   })
   .finally(() => {
-    console.log("Done");
+    console.log("\n--- DONE ---");
   });
