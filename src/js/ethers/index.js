@@ -1,4 +1,4 @@
-import { createAccount } from "./createAccount";
+import { createSigner } from "./createSigner";
 import { parseEther } from "ethers";
 
 const ADDR = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"; // replace with the adress you want to send SepoliaETH to, unless you want to send ETH to Vitalik :)
@@ -9,7 +9,7 @@ const ADDR = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"; // replace with the a
  * The transaction will be mined in the background, and the user operation result will be returned immediately.
  */
 export async function main() {
-  const signer = await createAccount();
+  const signer = await createSigner();
 
   const amountToSend = parseEther("0.0001");
 
