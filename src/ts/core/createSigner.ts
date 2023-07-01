@@ -17,8 +17,8 @@ const SIMPLE_ACCOUNT_FACTORY_ADDRESS =
   "0x9406Cc6185a346906296840746125a0E44976454";
 
 /**
- * @description Creates a smart contract account that can be used to send transactions
- * @returns The smart contract account owner + provider that can be used to send transactions/user operations from the SCA
+ * @description Creates a smart contract account that can be used to send user operations.
+ * @returns The smart contract account owner + provider, as a signer, that can be used to send user operations from the SCA
  */
 export async function createSigner() {
   const account = privateKeyToAccount(`0x${PRIV_KEY}`);

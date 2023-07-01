@@ -14,6 +14,10 @@ const ENTRYPOINT_ADDRESS = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789";
 const SIMPLE_ACCOUNT_FACTORY_ADDRESS =
   "0x9406Cc6185a346906296840746125a0E44976454";
 
+/**
+ * @description Creates a smart contract account that can be used to send user operations.
+ * @returns The smart contract account owner + provider, as a signer, that can be used to send user operations from the SCA
+ */
 export async function createSigner() {
   const alchemy = new Alchemy({
     apiKey: ALCHEMY_API_KEY,
