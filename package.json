@@ -15,8 +15,8 @@
   "author": "0xtito and racampos",
   "license": "ISC",
   "dependencies": {
-    "@alchemy/aa-core": "^0.1.0-alpha.4",
-    "@alchemy/aa-ethers": "^0.1.0-alpha.4",
+    "@alchemy/aa-core": "^0.1.0-alpha.17",
+    "@alchemy/aa-ethers": "^0.1.0-alpha.17",
     "alchemy-sdk": "^2.9.0",
     "dotenv": "^16.0.3",
     "ethers": "^6.5.1"
