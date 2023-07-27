@@ -42,13 +42,13 @@ export default async function createSigner() {
   );
 
   const signer = provider.connect(
-    (provider) =>
+    (rpcClient) =>
       new SimpleSmartContractAccount({
         entryPointAddress: ENTRYPOINT_ADDRESS,
         chain,
         owner,
         factoryAddress: SIMPLE_ACCOUNT_FACTORY_ADDRESS,
-        rpcClient: provider,
+        rpcClient,
       })
   );
 
